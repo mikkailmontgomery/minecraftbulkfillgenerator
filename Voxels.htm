@@ -189,6 +189,50 @@
 				render();
 
 			}
+
+			function brushUp(){
+				brush.geometry = new Cube(brush.geometry.width,brush.geometry.height + 50,brush.geometry.depth);
+				brush.position.y += 25;
+				render();
+			}
+			function brushDown(){
+				brush.geometry = new Cube(brush.geometry.width,brush.geometry.height - 50,brush.geometry.depth);
+				brush.position.y -= 25;
+				render();
+			}
+
+
+
+			onDocumentKeyDown = function( event ) {
+
+				switch( event.keyCode ) {
+
+					case 49: setBrushColor( 0 ); break;
+					case 50: setBrushColor( 1 ); break;
+					case 51: setBrushColor( 2 ); break;
+					case 52: setBrushColor( 3 ); break;
+					case 53: setBrushColor( 4 ); break;
+					case 54: setBrushColor( 5 ); break;
+					case 55: setBrushColor( 6 ); break;
+					case 56: setBrushColor( 7 ); break;
+					case 57: setBrushColor( 8 ); break;
+					case 48: setBrushColor( 9 ); break;
+
+					case 16: isShiftDown = true; interact(); render(); break;
+
+					case 37: offsetScene( - 1, 0 ); break;
+					case 38: offsetScene( 0, - 1 ); break;
+					case 39: offsetScene( 1, 0 ); break;
+					case 40: offsetScene( 0, 1 ); break;
+					case 87: brushUp(); break;
+					case 83: brushDown(); break;
+					//case 65: brushLeft(); break;
+					//case 68: brushRight(); break;
+				}
+
+			}
+							document.removeEventListener( 'keydown', onDocumentKeyDown, false );
+							document.addEventListener( 'keydown', onDocumentKeyDown, false );
 							document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
 							document.addEventListener( 'mouseup', onDocumentMouseUpmodded, false );
 

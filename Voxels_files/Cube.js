@@ -4,6 +4,11 @@
 
 var Cube = function (width, height, depth) {
 
+	//Added by mike
+  this.width = width;
+	this.height = height;
+	this.depth = depth;
+	//end
 	THREE.Geometry.call(this);
 
 	var scope = this,
